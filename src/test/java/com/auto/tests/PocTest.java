@@ -14,8 +14,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -24,7 +22,7 @@ import org.testng.annotations.Test;
 public class PocTest {
 	
 	WebDriver driver;
-	WebDriverWait wait=new WebDriverWait(driver, 20);
+	
 	public static final String USERNAME = "qa_user_43";
 	public static final String ACCESS_KEY = "14fef92c-6c00-4937-a4c6-8f21737b63e0";
 	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
@@ -51,8 +49,9 @@ public class PocTest {
 		driver.findElement(By.id("ap_email")).sendKeys("testsids21@gmail.com");
 		driver.findElement(By.id("continue")).click();
 		driver.findElement(By.id("ap_password")).sendKeys("testing@123");
+		pause(3);
 		driver.findElement(By.id("signInSubmit")).click();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),\"Hello, test\")]")));
+		pause(5);
 		assertTrue(driver.findElement(By.xpath("//span[contains(text(),\"Hello, test\")]")).isDisplayed(), "User is not logged in");
 	}
 	
@@ -74,6 +73,16 @@ public class PocTest {
 	@AfterSuite
 	public void tearDown() {
 		driver.quit();
+	}
+	
+	
+	public void pause(int a) {
+		try {
+			Thread.sleep(a*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
