@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-
-  <!-- Forgot Password Test -->
-  <suite-files>
-   <suite-file path=".//src/test/resources/ForgotPasswordTest.xml"></suite-file>
-  </suite-files>
-</suite> <!-- Suite -->
+<suite name="Demo Test">
+  <test name="Login Search Logout Test">
+    <classes>
+      <class name="com.auto.tests.POCTest"/>
+    </classes>
+  </test>
+</suite>
